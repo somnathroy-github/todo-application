@@ -1,0 +1,15 @@
+name: demo-workflow
+'on':
+  push: null
+jobs:
+  Explore-GitHub-Actions:
+    env:
+      IGNORE_NORMALISATION_GIT_HEAD_MOVE: '1'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: echo "Hello World!"
+      - run: node --version
+      - run: npm --version
+      - uses: actions/checkout@v4
+      - run: npm ci
