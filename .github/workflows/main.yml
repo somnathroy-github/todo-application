@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: [java, javascript]  # Add more languages as needed
+        language: [javascript]  # Add more languages as needed
 
     steps:
     - name: Checkout repository
