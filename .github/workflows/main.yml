@@ -1,15 +1,24 @@
-name: demo-workflow
-'on':
-  push: null
+name: CodeQL Analysis
+
+on:
+  push:
+    branches: [master]  # Run on pushes to the main branch
+
 jobs:
-  Explore-GitHub-Actions:
-    env:
-      IGNORE_NORMALISATION_GIT_HEAD_MOVE: '1'
+  analyze:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [java, javascript]  # Add more languages as needed
+
     steps:
-      - name: Install Dependencies
-        run: echo "Hello World!"
-      - run: node --version
-      - run: npm --version
-      - uses: actions/checkout@v4
-      - run: npm ci
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Analyze
+      uses: github/codeql-action/analyze@v1
