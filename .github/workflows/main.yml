@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        language: [javascript]  # Add more languages as needed
+        language: [javascript,typescript]  # Add more languages as needed
 
     steps:
     - name: Checkout repository
@@ -22,3 +22,8 @@ jobs:
 
     - name: Analyze
       uses: github/codeql-action/analyze@v3
+    - name: Upload CodeQL results
+      uses: actions/upload-artifact@v3
+      with:
+        name: codeql-results
+        path: .codeql-results
