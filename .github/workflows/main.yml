@@ -22,6 +22,14 @@ jobs:
 
     - name: Analyze
       uses: github/codeql-action/analyze@v3
+      
+    - name: Create CodeQL results directory
+      run: mkdir .codeql-results
+
+      # Example: Copy some files into .codeql-results directory
+    - name: Copy CodeQL results
+      run: cp path/to/codeql/results/* .codeql-results/
+      
     - name: Upload CodeQL results
       uses: actions/upload-artifact@v3
       with:
