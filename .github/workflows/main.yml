@@ -28,7 +28,7 @@ jobs:
 
       # Example: Copy some files into .codeql-results directory
     - name: Copy CodeQL results
-      run: cp path/to/codeql/results/* .codeql-results/
+      run: cp codeql-results/* .codeql-results/
       
     - name: Upload CodeQL results
       uses: actions/upload-artifact@v3
